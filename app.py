@@ -62,7 +62,7 @@ class HttpWSSProtocol(websockets.WebSocketServerProtocol):
             #{"speech": "Oke ini bekerja", "displayText": "Ini bekerja"}
             print(self.rddata)
             state = json.loads(self.rddata)['state']
-            self.rddata = '{"speech": "It is turned '+state+'", "displayText": "It is turned '+state+'"}'
+            self.rddata = '{"speech": "Lampu sudah di '+state+'kan", "displayText": "Lampu sudah di  '+state+'kan"}'
 
             response = '\r\n'.join([
                 'HTTP/1.1 200 OK',
@@ -81,7 +81,7 @@ async def ws_handler(websocket, path):
     game_name = 'g1'
     try:
         HttpWSSProtocol.rwebsocket = websocket
-        await websocket.send(json.dumps({'event': 'OK'}))
+        await websocket.send(json.dumps({'event': 'OK terhubung ke Yuzdrone'}))
         data ='{"empty":"empty"}'
         while True:
             data = await websocket.recv()
